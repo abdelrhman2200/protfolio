@@ -142,6 +142,7 @@
   100% { opacity: 0; transform: translate(-50%, -40%); }
 }
 .copied-text {
+  position: relative;
   color: #00ffae;
   font-size: 14px;
   margin-left: 10px;
