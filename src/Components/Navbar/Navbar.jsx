@@ -8,7 +8,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-  const resumePath = "/portfolio/Resume_Abdelrhman_Mohammed.pdf";
+  
 
   return (
     <>
@@ -23,7 +23,7 @@ const Navbar = () => {
 
         <div className="nav-button-group">
           <AnchorLink className="nav-button" offset={50} href="#contact">Connect With Me</AnchorLink>
-          <a className="nav-button" href={resumePath} download>Download Resume</a>
+          <a className="nav-button" href="/portfolio/Resume_Abdelrhman_Mohammed.pdf" download>Download Resume</a>
         </div>
 
         <div className="menu-icon" onClick={toggleMenu}>

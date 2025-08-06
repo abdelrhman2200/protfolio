@@ -15,7 +15,7 @@ const Hero = () => {
         </div>
         <a
           className="hero-resume"
-          href={`${import.meta.env.BASE_URL}Resume_Abdelrhman_Mohammed.pdf`}
+          href="/portfolio/Resume_Abdelrhman_Mohammed.pdf"
           download
         >
           My Resume
