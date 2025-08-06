@@ -27,14 +27,11 @@ const Navbar = () => {
         </div>
 
         <div className="menu-icon" onClick={toggleMenu}>
-          <FaBars />
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
 
       <div className={`sidebar ${menuOpen ? 'open' : ''}`}>
-        <div className="close-icon" onClick={closeMenu}>
-          <FaTimes />
-        </div>
         <ul className="sidebar-menu">
           <li onClick={closeMenu}><AnchorLink className="anchor-link" href="#home">Home</AnchorLink></li>
           <li onClick={closeMenu}><AnchorLink className="anchor-link" offset={50} href="#about">About Me</AnchorLink></li>
@@ -43,7 +40,7 @@ const Navbar = () => {
           <li onClick={closeMenu}><AnchorLink className="anchor-link" offset={50} href="#contact">Contact</AnchorLink></li>
           <div className="nav-button-group-vertical">
             <AnchorLink className="nav-button" offset={50} href="#contact">Connect With Me</AnchorLink>
-            <a className="nav-button" href={`${import.meta.env.BASE_URL}Resume_Abdelrhman_Mohammed.pdf`} download>Download Resume</a>
+            <a className="nav-button" href={resumePath} download>Download Resume</a>
           </div>
         </ul>
       </div>
