@@ -8,7 +8,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-  const resumePath = `${import.meta.env.BASE_URL}Resume_Abdelrhman_Mohammed.pdf`;
+  const resumePath = "/portfolio/Resume_Abdelrhman_Mohammed.pdf";
 
   return (
     <>
