@@ -6,13 +6,8 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -47,7 +42,7 @@ const Navbar = () => {
           <li onClick={closeMenu}><AnchorLink className="anchor-link" offset={50} href="#contact">Contact</AnchorLink></li>
           <div className="nav-button-group-vertical">
             <AnchorLink className="nav-button" offset={50} href="#contact">Connect With Me</AnchorLink>
-            <a className="nav-button" href="/Resume Abdelrhman Mohammed.pdf" download>Download Resume</a>
+            <a className="nav-button" href="/portfolio/Resume_Abdelrhman_Mohammed.pdf" download>Download Resume</a>
           </div>
         </ul>
       </div>
