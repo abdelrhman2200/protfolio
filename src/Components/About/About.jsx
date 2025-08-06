@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./About.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import about_profile from "../../assets/about_profile.png";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -12,13 +16,20 @@ import {
 } from "react-icons/fa";
 
 function About() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
     <div id="about" className="about">
-      <div className="about-title">
+      <div className="about-title" data-aos="fade-up">
         <h1>About Me</h1>
         <img src={theme_pattern} alt="" />
       </div>
-      <div className="about-section">
+
+      <div className="about-section" data-aos="fade-up">
         <div className="about-left">
           <img src={about_profile} alt="About Profile" />
         </div>
@@ -60,23 +71,34 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="about-achievements">
+
+      <div
+        className="about-achievements"
+        ref={ref}
+        data-aos="fade-up"
+      >
         <div className="about-achievement">
-          <h1>4+</h1>
+          <h1>
+            {inView ? <CountUp end={4} duration={4} suffix="+" /> : "0+"}
+          </h1>
           <p>Years Of Experience</p>
         </div>
 
         <div className="achievement-divider"></div>
 
         <div className="about-achievement">
-          <h1>80+</h1>
+          <h1>
+            {inView ? <CountUp end={80} duration={4} suffix="+" /> : "0+"}
+          </h1>
           <p>Projects Completed</p>
         </div>
 
         <div className="achievement-divider"></div>
 
         <div className="about-achievement">
-          <h1>35+</h1>
+          <h1>
+            {inView ? <CountUp end={35} duration={4} suffix="+" /> : "0+"}
+          </h1>
           <p>Happy Clients</p>
         </div>
       </div>

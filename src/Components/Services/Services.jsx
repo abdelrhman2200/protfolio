@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Services.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import services_data from "../../assets/services_data";
 
@@ -8,6 +10,10 @@ const Services = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   const openForm = (serviceName) => {
     setSelectedServices([serviceName]);
@@ -28,46 +34,39 @@ const Services = () => {
     setSelectedServices([]);
   };
 
-const onSubmit = async (event) => {
-  event.preventDefault();
-
-  setPopupMessage("Sending...");
-
-  const formData = new FormData(event.target);
-  formData.append("access_key", "7a5c1eaa-f6fd-4b94-9f6a-a5c2b1852b79");
-  formData.set("services", selectedServices.join(", "));
-
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setPopupMessage("✅ Request Submitted Successfully");
-      event.target.reset();
-      setShowForm(false);
-    } else {
-      setPopupMessage(`❌ Error: ${data.message}`);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setPopupMessage("Sending...");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "7a5c1eaa-f6fd-4b94-9f6a-a5c2b1852b79");
+    formData.set("services", selectedServices.join(", "));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setPopupMessage("✅ Request Submitted Successfully");
+        event.target.reset();
+        setShowForm(false);
+      } else {
+        setPopupMessage(`❌ Error: ${data.message}`);
+      }
+    } catch (err) {
+      setPopupMessage("❌ Network error. Try again.");
     }
-  } catch (err) {
-    setPopupMessage("❌ Network error. Try again.");
-  }
-
-  setShowPopup(true);
-  setTimeout(() => setShowPopup(false), 2500);
-};
-
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 2500);
+  };
 
   return (
-    <div id="services" className="services">
+    <div id="services" className="services" data-aos="fade-up">
       {showPopup && <div className="popup-message">{popupMessage}</div>}
 
       {showForm && (
         <div className="services-modal">
-          <div className="services-modal-content">
+          <div className="services-modal-content" data-aos="zoom-in">
             <span className="close-button" onClick={handleClose}>
               &times;
             </span>
@@ -116,14 +115,19 @@ const onSubmit = async (event) => {
         </div>
       )}
 
-      <div className="services-title">
+      <div className="services-title" data-aos="fade-up">
         <h1>My Services</h1>
         <img src={theme_pattern} alt="pattern" />
       </div>
 
       <div className="services-container">
         {services_data.map((service, index) => (
-          <div key={index} className="services-format">
+          <div
+            key={index}
+            className="services-format"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
             <h2>{service.s_name}</h2>
             <p>{service.s_desc}</p>
             <div
