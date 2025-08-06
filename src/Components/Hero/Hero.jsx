@@ -13,7 +13,13 @@ const Hero = () => {
         <div className="hero-connect">
           <AnchorLink href="#contact" className="connect-link">Connect With Me</AnchorLink>
         </div>
-        <a href="/Resume_Abdelrhman_Mohammed.pdf" download className="hero-resume">My Resume</a>
+        <a
+          href={`${import.meta.env.BASE_URL}Resume_Abdelrhman_Mohammed.pdf`}
+          download
+          className="hero-resume"
+        >
+          My Resume
+        </a>
       </div>
     </div>
   );
