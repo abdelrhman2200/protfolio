@@ -48,6 +48,7 @@ const Navbar = () => {
           <div className="nav-button-group-vertical">
             <AnchorLink className="nav-button" offset={50} href="#contact">Connect With Me</AnchorLink>
             <a className="nav-button" href="./Resume Abdelrhman Mohammed.pdf" download>Download Resume</a>
+
           </div>
         </ul>
       </div>
